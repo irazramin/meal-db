@@ -20,8 +20,54 @@
     </script>
   </head>
   <body class="bg-bodyBgColor">
-    
+    <!-- header section -->
+    <header>
+      <nav class="bg-navColor py-6">
+        <div class="w-4/5 mx-auto grid grid-cols-2">
+          <div>
+            <img src="img/meal-logo.png" alt="" />
+          </div>
+          <div class="flex items-center justify-evenly">
+            <button class="bg-red-700 text-white text-md px-3 py-1 rounded-md">
+              Home
+            </button>
+            <button
+              class="hover:bg-red-700 text-white text-md px-3 py-1 rounded-md"
+            >
+              API
+            </button>
+            <button
+              class="hover:bg-red-700 text-white text-md px-3 py-1 rounded-md"
+            >
+              Form
+            </button>
+            <input type="text" placeholder="search" class="p-2 w-32" />
+          </div>
+        </div>
+      </nav>
+    </header>
 
+    <!-- body section -->
+    <section class="w-4/5 mx-auto mt-16 text-white">
+      <div class="flex justify-evenly">
+        <div>
+          <img src="img/meal-icon.png" class="w-56 columns-1" alt="" />
+        </div>
+        <div class="text-center w-3/5 mx-auto">
+          <h1 class="text-4xl font-semibold">Welcome to TheMealDB</h1>
+          <p class="mt-4">
+            Welcome to TheMealDB: An open, crowd-sourced database of Recipes
+            from around the world. We also offer a
+            <span class="text-amber-600">free JSON API</span> for anyone wanting
+            to use it, with additional features for subscribers.
+          </p>
+        </div>
+        <div>
+          <img src="img/meal-icon.png" class="w-56 columns-1" alt="" />
+        </div>
+      </div>
+      
+    </section>
     <script src="js/index.js"></script>
   </body>
 </html>
