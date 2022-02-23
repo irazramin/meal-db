@@ -1,4 +1,5 @@
 const latestMealContainer = document.getElementById('latest-meal');
+
 const latestUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=l';
 const getLatestMeal = async (url) =>{
     const res = await fetch(url);
