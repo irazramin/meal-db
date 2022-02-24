@@ -2,21 +2,22 @@ const mealDetailsContainer = document.getElementById('meal-details-container');
 const ingredientMeasurementContainer = document.getElementById(
   'ingredient-measure-container'
 );
-const mealId = JSON.parse(localStorage.getItem("mealId"));
+const instructionContainer = document.getElementById('instructions');
+const mealId = JSON.parse(localStorage.getItem('mealId'));
 const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
 
-const getMealById = async (url) =>{
-    const res = await fetch(url);
-    const data = await res.json();
-    setDataToContainer(data);
-}
+const getMealById = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
+  setDataToContainer(data);
+};
 
-getMealById(mealUrl)
+getMealById(mealUrl);
 
 const setDataToContainer = (singleMeal) => {
-    console.log(singleMeal.meals[0].strMealThumb);
-    const div = document.createElement('div');
-    div.innerHTML = `
+  console.log(singleMeal.meals[0].strMealThumb);
+  const div = document.createElement('div');
+  div.innerHTML = `
     <h3 class="text-2xl text-white font-semibold text-center">${singleMeal.meals[0].strMeal}</h3>
     <img
     class="object-cover w-1/3 mt-12 mx-auto"
@@ -24,10 +25,11 @@ const setDataToContainer = (singleMeal) => {
     alt=""
     />
     `;
-    mealDetailsContainer.appendChild(div)
-    const ingredient = document.createElement('div');
-     ingredient.className += 'border-r-2 border-dashed border-white p-3 text-white'
-     ingredient.innerHTML = `
+  mealDetailsContainer.appendChild(div);
+  const ingredient = document.createElement('div');
+  ingredient.className +=
+    'border-r-2 border-dashed border-white p-3 text-white';
+  ingredient.innerHTML = `
               <h4 class="text-xl font-medium text-center text-white">
             Ingredients
           </h4>
@@ -67,13 +69,13 @@ const setDataToContainer = (singleMeal) => {
           </div>
     `;
 
-    ingredientMeasurementContainer.appendChild(ingredient)
+  ingredientMeasurementContainer.appendChild(ingredient);
 
-    const measurement = document.createElement('div');
+  const measurement = document.createElement('div');
 
-      measurement.className +=
-        'border-r-2 border-dashed border-white p-3 text-white';
-      measurement.innerHTML = `
+  measurement.className +=
+    'border-r-2 border-dashed border-white p-3 text-white';
+  measurement.innerHTML = `
               <h4 class="text-xl font-medium text-center text-white">
             Measurements
           </h4>
@@ -113,7 +115,13 @@ const setDataToContainer = (singleMeal) => {
           </div>
     `;
 
-      ingredientMeasurementContainer.appendChild(measurement);
+  ingredientMeasurementContainer.appendChild(measurement);
 
-    
-} 
+  const instructions = document.createElement('div');
+  instructions.innerHTML = `
+             <h4 class="text-xl font-medium text-center text-white">instructions</h4>
+              <p class="text-justify mt-5 text-white text-lg">${singleMeal.meals[0].strInstructions}</p>
+      `;
+
+  instructionContainer.appendChild(instructions);
+};

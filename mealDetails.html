@@ -48,14 +48,53 @@
 
     <!-- meal info section -->
     <section class="mt-10 w-4/5 mx-auto">
+        <!-- meal img -->
       <div id="meal-details-container"></div>
+      <!-- meal ingredients and measurements -->
       <div
         id="ingredient-measure-container"
-        class="border-dashed grid grid-cols-2 border-2 border-white w-4/5 mx-auto mt-10"
+        class="border-dashed grid grid-cols-1 lg:grid-cols-2 border-2 border-white w-4/5 mx-auto mt-10"
       >
-       
+      </div>
+      <!-- instructions -->
+      <div id="instructions" class="mt-20 w-4/5 mx-auto border-2 border-dashed border-white p-5">
+          <div>
+             
+          </div>
       </div>
     </section>
+
+     <footer class="mt-20 py-7 bg-navColor">
+      <div class="w-4/5 mx-auto">
+        <div class="grid grid-cols-3">
+          <div class="text-white">© 2022 TheMealDB Proudly built in the UK</div>
+          <div class="flex">
+            <a target="_blank" href="https://www.themealdb.com/">
+              <img src="img/meal-logo.png" alt="" />
+            </a>
+            <a target="_blank" href="https://www.theaudiodb.com/">
+              <img
+                src="https://www.themealdb.com/images/logo-tadb.png"
+                alt=""
+              />
+            </a>
+            <a target="_blank" href="https://www.thesportsdb.com/">
+              <img
+                src="https://www.themealdb.com/images/logo-tsdb.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <div>
+            <ul class="flex justify-end text-white">
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">About</li>
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Faq</li>
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Contact</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="js/mealDetails.js"></script>
   </body>
 </html>

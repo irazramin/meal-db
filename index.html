@@ -18,13 +18,17 @@
         },
       };
     </script>
+    <script
+      src="https://kit.fontawesome.com/03c654ecea.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body class="bg-bodyBgColor">
     <!-- header section -->
     <header>
       <nav class="bg-navColor py-6">
         <div class="w-4/5 mx-auto grid grid-cols-2">
-          <div>
+          <div class="cursor-pointer">
             <img src="img/meal-logo.png" alt="" />
           </div>
           <div class="flex items-center justify-evenly">
@@ -32,12 +36,12 @@
               Home
             </button>
             <button
-              class="hover:bg-red-700 text-white text-md px-3 py-1 rounded-md"
+              class="hover:bg-red-700 duration-100 text-white text-md px-3 py-1 rounded-md"
             >
               API
             </button>
             <button
-              class="hover:bg-red-700 text-white text-md px-3 py-1 rounded-md"
+              class="hover:bg-red-700 duration-100 text-white text-md px-3 py-1 rounded-md"
             >
               Form
             </button>
@@ -71,11 +75,17 @@
       <div class="py-5 flex justify-center items-center flex-col">
         <div class="flex rounded-lg">
           <input
+            id="search-meal"
             type="text"
             placeholder="search for a meal....."
-            class="py-2 px-3 w-72 rounded-l-md"
+            class="py-2 px-3 w-72 rounded-l-md focus:outline-none text-gray-800 font-medium"
           />
-          <button class="py-2 px-3 bg-white border-l-2 rounded-r-md">f</button>
+          <button
+            id="search-btn"
+            class="py-2 px-3 bg-white border-l-2 rounded-r-md"
+          >
+            <i class="fa-solid fa-magnifying-glass text-black fa-bold"></i>
+          </button>
         </div>
         <p>You can get 100s of meal here</p>
       </div>
@@ -83,9 +93,44 @@
     </section>
     <!-- latest meal -->
     <section class="text-white w-4/5 mx-auto mt-10">
-        <h2 class="text-xl font-medium text-center ">Latest meal</h2>
-        <div id="latest-meal" class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"> </div>
+      <h2 class="text-xl font-medium text-center">Latest meal</h2>
+      <div
+        id="latest-meal"
+        class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"
+      ></div>
     </section>
+
+    <footer class="mt-20 py-7 bg-navColor">
+      <div class="w-4/5 mx-auto">
+        <div class="grid grid-cols-3">
+          <div class="text-white">© 2022 TheMealDB Proudly built in the UK</div>
+          <div class="flex">
+            <a target="_blank" href="https://www.themealdb.com/">
+              <img src="img/meal-logo.png" alt="" />
+            </a>
+            <a target="_blank" href="https://www.theaudiodb.com/">
+              <img
+                src="https://www.themealdb.com/images/logo-tadb.png"
+                alt=""
+              />
+            </a>
+            <a target="_blank" href="https://www.thesportsdb.com/">
+              <img
+                src="https://www.themealdb.com/images/logo-tsdb.png"
+                alt=""
+              />
+            </a>
+          </div>
+          <div>
+            <ul class="flex justify-end text-white">
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">About</li>
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Faq</li>
+              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Contact</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="js/index.js"></script>
   </body>
 </html>
