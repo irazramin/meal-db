@@ -1,51 +1,98 @@
 const latestMealContainer = document.getElementById('latest-meal');
+const searchMealContainer = document.getElementById('search-meal-con');
+const notFound = document.getElementById('not-found');
 const latestUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=l';
 const searchInput = document.getElementById('search-meal');
 const searchBtn = document.getElementById('search-btn');
+const loading = document.getElementById('loading');
+
 const getLatestMeal = async (url) => {
-  const res = await fetch(url);
-  const data = await res.json();
-  getLatestMealData(data);
-  // console.log(data.meals);
+  loading.classList.remove('hidden');
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    loading.classList.add('hidden');
+    if (data.meals === null) {
+      notFound.classList.remove('hidden');
+    } else {
+      getLatestMealData(data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const getSearchMeal = async (url) => {
-  const res = await fetch(url);
-  const data = await res.json();
-  latestMealContainer.textContent = '';
-  getLatestMealData(data);
+  loading.classList.remove('hidden');
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    searchMealContainer.textContent = '';
+    if (data.meals === null) {
+      notFound.classList.remove('hidden');
+      latestMealContainer.style.display = 'none';
+    } else {
+      getSearchMealData(data);
+    }
+    loading.classList.add('hidden');
+  } catch (error) {
+    loading.classList.add('hidden');
+    console.log(error);
+    loading.classList.add('hidden');
+  }
 };
 
 getLatestMeal(latestUrl);
+
 const getInput = () => {
   searchBtn.addEventListener('click', () => {
     const searchValue = searchInput.value;
-    const searchUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`;
-    getSearchMeal(searchUrl);
-    searchInput.value = '';
+    if (searchValue === '') {
+      searchInput.style.border = `1px solid red`;
+      searchInput.style.borderRight = `none`;
+      searchBtn.style.border = `1px solid red`;
+      searchBtn.style.borderLeft = `none`;
+    } else {
+      searchInput.style.border = `none`;
+      searchBtn.style.border = `none`;
+      const searchUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`;
+      getSearchMeal(searchUrl);
+      searchInput.value = '';
+    }
   });
 };
 getInput();
 
 const getLatestMealData = (data) => {
   const meals = data.meals;
-    // console.log(meals.length);
-  if (meals.length == 0) {
-    const p = document.createElement('p');
-    p.innerText = `no data found`;
-    latestMealContainer.appendChild(p);
-  } else {
-    meals.forEach((meal) => {
-      const div = document.createElement('div');
-      div.innerHTML = `
+  meals.forEach((meal) => {
+    const div = document.createElement('div');
+    div.innerHTML = `
              <img src="${meal.strMealThumb}" alt="">
              <h4 class="text-center text-amber-600">${meal.strMeal}</h4>
         `;
-      latestMealContainer.appendChild(div);
-      div.addEventListener('click', () => {
-        localStorage.setItem('mealId', JSON.stringify(meal.idMeal));
-        window.location.href = 'mealDetails.html';
-      });
+    latestMealContainer.appendChild(div);
+    div.addEventListener('click', () => {
+      localStorage.setItem('mealId', JSON.stringify(meal.idMeal));
+      window.location.href = 'mealDetails.html';
     });
-  }
+  });
+};
+
+const getSearchMealData = (data) => {
+  console.log(searchMealContainer);
+  const meals = data.meals;
+  meals.forEach((meal) => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+             <img src="${meal.strMealThumb}" alt="">
+             <h4 class="text-center text-amber-600">${meal.strMeal}</h4>
+        `;
+    searchMealContainer.appendChild(div);
+    latestMealContainer.style.display = 'none';
+    div.addEventListener('click', () => {
+      localStorage.setItem('mealId', JSON.stringify(meal.idMeal));
+      window.location.href = 'mealDetails.html';
+    });
+  });
 };

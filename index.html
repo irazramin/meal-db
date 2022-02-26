@@ -93,13 +93,28 @@
     </section>
     <!-- latest meal -->
     <section class="text-white w-4/5 mx-auto mt-10">
-      <h2 class="text-xl font-medium text-center">Latest meal</h2>
+      <h2 class="text-xl font-medium text-center latest-meal-text">Latest meal</h2>
+      <p class="text-center text-2xl text-red-500 mt-10 hidden" id="not-found">Data not found!</p>
+      <div
+        id="search-meal-con"
+        class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"
+      ></div>
       <div
         id="latest-meal"
         class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"
       ></div>
     </section>
 
+    <div
+      class="w-full h-full absolute top-0 left-0 bottom-0 hidden"
+      id="loading"
+    >
+      <img
+        class="w-16 mx-auto absolute top-3/4 mt-8 left-1/2 -ml-5 duration-500 "
+        src="img/circles-loader.svg"
+        alt=""
+      />
+    </div>
     <footer class="mt-20 py-7 bg-navColor">
       <div class="w-4/5 mx-auto">
         <div class="grid grid-cols-3">
@@ -123,9 +138,21 @@
           </div>
           <div>
             <ul class="flex justify-end text-white">
-              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">About</li>
-              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Faq</li>
-              <li class="mx-2 cursor-pointer hover:text-orange-700 duration-200">Contact</li>
+              <li
+                class="mx-2 cursor-pointer hover:text-orange-700 duration-200"
+              >
+                About
+              </li>
+              <li
+                class="mx-2 cursor-pointer hover:text-orange-700 duration-200"
+              >
+                Faq
+              </li>
+              <li
+                class="mx-2 cursor-pointer hover:text-orange-700 duration-200"
+              >
+                Contact
+              </li>
             </ul>
           </div>
         </div>
