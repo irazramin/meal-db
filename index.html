@@ -28,10 +28,10 @@
     <header>
       <nav class="bg-navColor py-6">
         <div class="w-4/5 mx-auto grid grid-cols-2">
-          <div class="cursor-pointer">
+          <div class="cursor-pointer" id="home-page">
             <img src="img/meal-logo.png" alt="" />
           </div>
-          <div class="flex items-center justify-evenly">
+          <div class="md:flex items-center justify-evenly hidden">
             <button class="bg-red-700 text-white text-md px-3 py-1 rounded-md">
               Home
             </button>
@@ -93,15 +93,19 @@
     </section>
     <!-- latest meal -->
     <section class="text-white w-4/5 mx-auto mt-10">
-      <h2 class="text-xl font-medium text-center latest-meal-text">Latest meal</h2>
-      <p class="text-center text-2xl text-red-500 mt-10 hidden" id="not-found">Data not found!</p>
+      <h2 class="text-xl font-medium text-center latest-meal-text">
+        Latest meal
+      </h2>
+      <p class="text-center text-2xl text-red-500 mt-10 hidden" id="not-found">
+        Data not found!
+      </p>
       <div
         id="search-meal-con"
-        class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-6 mt-5 cursor-pointer"
       ></div>
       <div
         id="latest-meal"
-        class="grid grid-cols-4 gap-x-10 gap-y-6 mt-5"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-6 mt-5 cursor-pointer"
       ></div>
     </section>
 
@@ -110,14 +114,14 @@
       id="loading"
     >
       <img
-        class="w-16 mx-auto absolute top-3/4 mt-8 left-1/2 -ml-5 duration-500 "
+        class="w-16 mx-auto absolute top-3/4 mt-8 left-1/2 -ml-5 duration-500"
         src="img/circles-loader.svg"
         alt=""
       />
     </div>
     <footer class="mt-20 py-7 bg-navColor">
       <div class="w-4/5 mx-auto">
-        <div class="grid grid-cols-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="text-white">© 2022 TheMealDB Proudly built in the UK</div>
           <div class="flex">
             <a target="_blank" href="https://www.themealdb.com/">
@@ -137,7 +141,7 @@
             </a>
           </div>
           <div>
-            <ul class="flex justify-end text-white">
+            <ul class="flex lg:justify-end text-white">
               <li
                 class="mx-2 cursor-pointer hover:text-orange-700 duration-200"
               >

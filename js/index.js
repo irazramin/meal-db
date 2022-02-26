@@ -6,6 +6,7 @@ const searchInput = document.getElementById('search-meal');
 const searchBtn = document.getElementById('search-btn');
 const loading = document.getElementById('loading');
 
+// call api for latest meal
 const getLatestMeal = async (url) => {
   loading.classList.remove('hidden');
   try {
@@ -22,6 +23,7 @@ const getLatestMeal = async (url) => {
   }
 };
 
+// call API with input data
 const getSearchMeal = async (url) => {
   loading.classList.remove('hidden');
   try {
@@ -44,6 +46,7 @@ const getSearchMeal = async (url) => {
 
 getLatestMeal(latestUrl);
 
+// get meal name from input
 const getInput = () => {
   searchBtn.addEventListener('click', () => {
     const searchValue = searchInput.value;
@@ -63,6 +66,7 @@ const getInput = () => {
 };
 getInput();
 
+// add data to latest container 
 const getLatestMealData = (data) => {
   const meals = data.meals;
   meals.forEach((meal) => {
@@ -79,6 +83,7 @@ const getLatestMealData = (data) => {
   });
 };
 
+// add data to search container
 const getSearchMealData = (data) => {
   console.log(searchMealContainer);
   const meals = data.meals;
@@ -91,8 +96,16 @@ const getSearchMealData = (data) => {
     searchMealContainer.appendChild(div);
     latestMealContainer.style.display = 'none';
     div.addEventListener('click', () => {
+      // set data to local storage
       localStorage.setItem('mealId', JSON.stringify(meal.idMeal));
+      // navigate to single meal page
       window.location.href = 'mealDetails.html';
     });
   });
 };
+
+// go back to home page
+document.getElementById('home-page').addEventListener('click',()=>{
+      window.location.href = 'index.html';
+   
+});

@@ -3,9 +3,11 @@ const ingredientMeasurementContainer = document.getElementById(
   'ingredient-measure-container'
 );
 const instructionContainer = document.getElementById('instructions');
+// fetch data from local storage
 const mealId = JSON.parse(localStorage.getItem('mealId'));
 const mealUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
 
+// call API with single meal id
 const getMealById = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
@@ -14,6 +16,7 @@ const getMealById = async (url) => {
 
 getMealById(mealUrl);
 
+// set data to single meal container
 const setDataToContainer = (singleMeal) => {
   console.log(singleMeal.meals[0].strMealThumb);
   const div = document.createElement('div');
@@ -125,3 +128,9 @@ const setDataToContainer = (singleMeal) => {
 
   instructionContainer.appendChild(instructions);
 };
+
+// go back to home page
+document.getElementById('home-page').addEventListener('click',()=>{
+      window.location.href = 'index.html';
+   
+});
